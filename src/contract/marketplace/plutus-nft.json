@@ -1,0 +1,79 @@
+{
+  "preamble": {
+    "title": "aa/test",
+    "description": "Aiken contracts for project 'aa/test'",
+    "version": "0.0.0",
+    "plutusVersion": "v2",
+    "compiler": {
+      "name": "Aiken",
+      "version": "v1.0.29-alpha+16fb02e"
+    },
+    "license": "Apache-2.0"
+  },
+  "validators": [
+    {
+      "title": "marketplace.marketplace",
+      "datum": {
+        "title": "datum",
+        "schema": {
+          "$ref": "#/definitions/marketplace~1Datum"
+        }
+      },
+      "redeemer": {
+        "title": "_redeemer",
+        "schema": {
+          "$ref": "#/definitions/Void"
+        }
+      },
+      "compiledCode": "5902ff0100003232323232323223223225333006323232323253323300c3001300d37546022602400c2a66601800429444c8c8c8c8cc894ccc0494ccc048cdd780126103d87a800014a2266ebc00530103d87a800014a02944ccc004020dd6980218091baa00f30023301430023301430073012375401e97ae0330144c0103d87a80004bd7019980080419b833370490011bad30043012375401e906400a6150d8799fd8799f581cf49f1de83ba5e871ecd7c7508035753f42d7c8c02b46e9f8fbccd52cffd8799fd8799fd8799f581cd6e19ab0f853307efb27e60ace27e41de62cb5e3c2b7a88672903b70ffffffff00222323300100100422533301700114c103d87a800013232533301653330163370e64a66602e601860306ea8004520001375a603860326ea8004c94ccc05cc030c060dd50008a6103d87a8000132330010013758603a60346ea8008894ccc070004530103d87a80001323232533301c3371e91100375c60420062601c660406ea00052f5c026600a00a0046eb4c080c084008c080008dd6180f00099198008009bac301c301d3019375400644a666036002298103d87a80001323232533301b3371e91100375c60400062601a6603e6e9c0052f5c026600a00a0046eb0c07cc080008c07c008dd6180e800803099baf300930183754601260306ea8008c024c060dd50028a50130083301a0024bd70099802002000980d801180c8009ba5480008c04c0048c048c04cc04cc04c004dc3a40042940c8c8cc004004dd618089809180918091809180918091809180918071baa00522533301000114a0264a66601c66e3cdd718098010020a511330030030013013001375c600260186ea80248c03cc040c040004dd618069807180718051baa001300c0013008375400229309b2b19299980299b8748000c01800454ccc020c01c00452616163754002a66600466e1d20003003375400226464646464646464a66601a60200042930b1bad300e001300e002375c601800260180046eb8c028004c028008dd7180400098021baa001165734aae7555cf2ab9f5740ae855d101",
+      "hash": "50e9f76fe5cc5c03a40f7cae16bd9c3d66de1d13b16fcff9f704c543"
+    }
+  ],
+  "definitions": {
+    "ByteArray": {
+      "dataType": "bytes"
+    },
+    "Int": {
+      "dataType": "integer"
+    },
+    "Void": {
+      "title": "Unit",
+      "description": "The nullary constructor.",
+      "anyOf": [
+        {
+          "dataType": "constructor",
+          "index": 0,
+          "fields": []
+        }
+      ]
+    },
+    "marketplace/Datum": {
+      "title": "Datum",
+      "anyOf": [
+        {
+          "title": "Datum",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "policyId",
+              "$ref": "#/definitions/ByteArray"
+            },
+            {
+              "title": "assetName",
+              "$ref": "#/definitions/ByteArray"
+            },
+            {
+              "title": "seller",
+              "$ref": "#/definitions/ByteArray"
+            },
+            {
+              "title": "price",
+              "$ref": "#/definitions/Int"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
