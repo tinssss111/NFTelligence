@@ -11,7 +11,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 # API keys
-load_dotenv()
+load_dotenv(dotenv_path=".env")
 gg_api_key = os.getenv("GG_API_KEY")
 cse_id = os.getenv("CSE_ID")
 client = Groq(

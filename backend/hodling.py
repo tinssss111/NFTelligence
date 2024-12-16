@@ -7,7 +7,7 @@ from googleapiclient.discovery import build
 from groq import Groq
 from flask_cors import CORS
 
-load_dotenv()
+load_dotenv(dotenv_path=".env")
 # Flask app
 app = Flask(__name__)
 CORS(app)

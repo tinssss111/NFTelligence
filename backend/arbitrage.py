@@ -9,7 +9,7 @@ from groq import Groq  # Thư viện Groq cho AI phân tích
 app = Flask(__name__)
 CORS(app)
 
-load_dotenv()
+load_dotenv(dotenv_path=".env")
 # Groq API Key
 groq_client = Groq(
     api_key=os.getenv("GROQ_API_KEY_2"),)
