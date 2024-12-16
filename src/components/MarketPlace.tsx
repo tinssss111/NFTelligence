@@ -40,6 +40,7 @@ const MarketPlace = () => {
 
       const validator = getValidator();
       const contractAddress = lucid.utils.validatorToAddress(validator);
+      console.log(contractAddress);
 
       const free = (BigInt(nft.datum.price) * 1n * 10n ** 6n) / 100n;
 
