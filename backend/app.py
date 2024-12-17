@@ -1,15 +1,15 @@
 import os
 import re
 from dotenv import load_dotenv
-from flask import Flask, jsonify
+from flask import Blueprint, Flask, jsonify
 import requests
 from googleapiclient.discovery import build
 from groq import Groq
 from flask_cors import CORS
 
 # Flask app
-app = Flask(__name__)
-CORS(app)
+app_bp = Blueprint('app_bp', __name__)
+
 # API keys
 load_dotenv(dotenv_path=".env")
 gg_api_key = os.getenv("GG_API_KEY")
@@ -80,7 +80,7 @@ def analyze_market(memecoin_data, trends):
         return None
 
 
-@app.route('/trend', methods=['GET'])
+@app_bp.route('/', methods=['GET'],strict_slashes=False)
 def main():
     """Main endpoint to get market analysis and recommendation."""
     memecoin_data = fetch_memecoin_info()
@@ -105,5 +105,3 @@ def main():
         }
     })
 
-if __name__ == "__main__":
-    app.run(debug=True)

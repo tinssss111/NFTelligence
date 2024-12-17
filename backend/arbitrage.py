@@ -1,13 +1,12 @@
 import os
 import ccxt
 from dotenv import load_dotenv
-from flask import Flask, jsonify
+from flask import Blueprint, jsonify
 from flask_cors import CORS
 from groq import Groq  # Thư viện Groq cho AI phân tích
 
 # Cấu hình Flask app
-app = Flask(__name__)
-CORS(app)
+arbitrage_bp = Blueprint('arbitrage_bp', __name__)
 
 load_dotenv(dotenv_path=".env")
 # Groq API Key
@@ -73,7 +72,7 @@ def analyze_arbitrage_with_groq(prices):
         return "Unable to analyze arbitrage opportunities using Groq."
 
 
-@app.route("/arbitrage", methods=["GET"])
+@arbitrage_bp.route("/", methods=["GET"],strict_slashes=False)
 def arbitrage():
     """API kiểm tra cơ hội arbitrage."""
     # Mặc định sử dụng ADA/USDT nếu không có đồng tiền cụ thể
@@ -88,7 +87,3 @@ def arbitrage():
         "ai_analysis": ai_analysis
     })
 
-
-if __name__ == "__main__":
-    print("Arbitrage Trading Bot with AI is running...")
-    app.run(debug=True, port=5002)

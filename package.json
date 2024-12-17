@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "concurrently \"npm run dev\" \"npm run start-python\"",
-    "start-python": "concurrently \"python backend/app.py\" \"python backend/btc.py\" \"python backend/arbitrage.py\" \"python backend/hodling.py\""
+    "start-python": "concurrently \"python backend/main.py\""
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.15",

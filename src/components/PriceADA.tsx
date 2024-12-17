@@ -76,7 +76,7 @@ export const PriceADA = () => {
       const txHashResult = await signedTx.submit();
 
       setTxHash(txHashResult);
-      const response = await axios.get("http://127.0.0.1:5002/arbitrage");
+      const response = await axios.get("http://127.0.0.1:5000/arbitrage");
       setAnalysis(response.data.ai_analysis);
 
       await new Promise((resolve) => setTimeout(resolve, 5000));

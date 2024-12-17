@@ -75,7 +75,7 @@ export const Hodling = () => {
 
       setTxHash(txHashResult);
 
-      const response = await axios.get("http://127.0.0.1:5003/investment");
+      const response = await axios.get("http://127.0.0.1:5000/investment");
       setAnalysis(response.data.analysis);
 
       await new Promise((resolve) => setTimeout(resolve, 5000));

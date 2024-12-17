@@ -1,15 +1,17 @@
-
+# Base image
 FROM python:3.11
 
-# Chỉ định thư mục làm việc trong container
+# Set working directory
 WORKDIR /app
 
-# Copy toàn bộ code vào container
-COPY . .
-COPY requirements.txt requirements.txt
-# Cài đặt dependencies từ requirements.txt (nếu có)
+# Copy files
+COPY . /app
 
-RUN pip install --no-cache-dir -r requirements.txt || echo "No requirements.txt found"
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Chạy các file Python backend
-CMD ["sh", "-c", "python backend/app.py & python backend/btc.py & python backend/arbitrage.py & python backend/hodling.py"]
+# Expose the port
+EXPOSE 5000
+
+# Run Flask app
+CMD ["python", "main.py"]

@@ -78,7 +78,7 @@ export const SendAda = () => {
       await new Promise((resolve) => setTimeout(resolve, 5000));
       setTxHash("");
 
-      const response = await axios.get("http://127.0.0.1:5001/btc");
+      const response = await axios.get("http://127.0.0.1:5000/btc");
       setAnalysis(response.data.analysis);
     } catch (error: unknown) {
       if (error instanceof Error) {

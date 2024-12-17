@@ -1,7 +1,7 @@
 import os
 import re
 from dotenv import load_dotenv 
-from flask import Flask, jsonify
+from flask import Blueprint, Flask, jsonify
 import requests
 from googleapiclient.discovery import build
 from groq import Groq
@@ -9,8 +9,7 @@ from flask_cors import CORS
 
 load_dotenv(dotenv_path=".env")
 # Flask app
-app = Flask(__name__)
-CORS(app)
+hodling_bp = Blueprint('hodling_bp', __name__)
 
 # API keys
 gg_api_key = os.getenv("GG_API_KEY")
@@ -92,7 +91,7 @@ def analyze_coin_market(coin_data, trends):
         return None
 
 
-@app.route("/investment", methods=["GET"])
+@hodling_bp.route("/", methods=["GET"],strict_slashes=False)
 def investment_analysis():
     """Endpoint to analyze and recommend cryptocurrency for long-term investment."""
     coin_data = fetch_coin_info()
@@ -124,6 +123,3 @@ def investment_analysis():
         }
     )
 
-
-if __name__ == "__main__":
-    app.run(debug=True, port=5003)
