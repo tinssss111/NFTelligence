@@ -12,6 +12,10 @@ from arbitrage import arbitrage_bp
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({"message": "Welcome to NF-Telligence API!"})
+
 # Đăng ký các route từ các file
 app.register_blueprint(app_bp, url_prefix="/trend")
 app.register_blueprint(btc_bp, url_prefix="/btc")
